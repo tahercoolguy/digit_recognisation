@@ -9,7 +9,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 from io import BytesIO  
-
+import cv2
 
 export_file_url = 'https://www.dropbox.com/s/0hqgleeqm3nmmtz/digit_model.pkl?dl=1'
 export_file_name = 'digit_model.pkl'
