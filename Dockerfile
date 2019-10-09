@@ -1,7 +1,7 @@
-FROM python:3.7-slim-stretch
 
-RUN apt-get update && apt-get install -y git python3-dev gcc \
-    && rm -rf /var/lib/apt/lists/*
+# Ubuntu 16.04 base image
+FROM ubuntu:16.04
+MAINTAINER Jose Rivera <info@joserivera.org>
 
 # Update packages and install basics
 RUN apt-get update && apt-get install -y \
@@ -43,6 +43,12 @@ ENV VLFEAT_DIR=/vlfeat-0.9.20
 # Move to working dir and clean up
 WORKDIR /
 RUN rm -rf /tmp/*
+
+FROM python:3.7-slim-stretch
+
+RUN apt-get update && apt-get install -y git python3-dev gcc \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 
 RUN pip install --upgrade -r requirements.txt
