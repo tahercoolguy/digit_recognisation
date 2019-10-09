@@ -3,6 +3,20 @@ FROM python:3.7-slim-stretch
 RUN apt-get update && apt-get install -y git python3-dev gcc \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y \ 
+    pkg-config \
+    python-dev \ 
+    python-opencv \ 
+    libopencv-dev \ 
+    libav-tools  \ 
+    libjpeg-dev \ 
+    libpng-dev \ 
+    libtiff-dev \ 
+    libjasper-dev \ 
+    python-numpy \ 
+    python-pycurl \ 
+    python-opencv
+
 COPY requirements.txt .
 
 RUN pip install --upgrade -r requirements.txt
