@@ -151,7 +151,7 @@ async def homepage(request):
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
 
-predict=""
+
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
@@ -162,6 +162,7 @@ async def analyze(request):
     predict_append()
     #new Ends
     # prediction = learn.predict(img)[0]
+    predict=""
     for i in predictions:
         predict=predict+" "
     return JSONResponse({'result': str(predict)})
