@@ -164,7 +164,7 @@ async def analyze(request):
     # prediction = learn.predict(img)[0]
     predict=""
     for i in predictions:
-        predict=predict+" "
+        predict=predict+" "+str(i)
     return JSONResponse({'result': str(predict)})
 
 
