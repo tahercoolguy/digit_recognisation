@@ -100,7 +100,8 @@ def predict_append():
 
     ctrs, hier  = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
-   
+    # Find contours in the image
+    # ctrs, hier ,_ = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 
     # Get rectangles contains each contour
@@ -108,7 +109,7 @@ def predict_append():
 
 
 
-    for (i, c) in enumerate(hier):
+    for (i, c) in enumerate(ctrs):
         (x, y, w, h) = cv2.boundingRect(c)
         # WRITE YOUR CODE HERE!
         # use slicing and the (x, y, w, h) values of the bounding
