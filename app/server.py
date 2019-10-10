@@ -10,7 +10,7 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 from io import BytesIO
 import cv2
-
+import os
 
 export_file_url = 'https://www.dropbox.com/s/0hqgleeqm3nmmtz/digit_model.pkl?dl=1'
 export_file_name = 'digit_model.pkl'
@@ -96,8 +96,12 @@ def predict_append():
     img=rotated_image
 
 
-    # Find contours in the image
-    ctrs, hier ,_ = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    print(os.path.realpath(__file__))
+
+    ctrs, hier  = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+   
+
 
     # Get rectangles contains each contour
     # rects = [cv2.boundingRect(ctr) for ctr in hier]
