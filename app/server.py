@@ -165,6 +165,7 @@ async def analyze(request):
     predict=""
     for i in predictions:
         predict=predict+" "+str(i)
+    predictions.clear()
     return JSONResponse({'result': str(predict)})
 
 
