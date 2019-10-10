@@ -82,8 +82,8 @@ def rotate_image(mat, angle):
 
 
 predictions=[]
-def predict_append(img):
-    im = cv2.imread(img)
+def predict_append():
+    im = cv2.imread("new.jpg")
 
     im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     im_gray = cv2.GaussianBlur(im_gray, (5, 5), 0)
@@ -151,9 +151,10 @@ predict=""
 async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
-    # img = open_image(BytesIO(img_bytes))
+    img = open_image(BytesIO(img_bytes))
+    img.save("new.jpg")
     #new Code For Digits
-    predict_append(BytesIO(img_bytes))
+    predict_append()
     #new Ends
     # prediction = learn.predict(img)[0]
     for i in predictions:
