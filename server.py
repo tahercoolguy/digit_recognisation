@@ -83,7 +83,7 @@ def rotate_image(mat, angle):
 
 predictions=[]
 def predict_append():
-    im = cv2.imread("/content/new.jpg")
+    im = cv2.imread("new.jpg")
 
     im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     im_gray = cv2.GaussianBlur(im_gray, (5, 5), 0)
@@ -97,7 +97,8 @@ def predict_append():
 
 
     # Find contours in the image
-    ctrs, hier ,_ = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    # ctrs, hier ,_ = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    ctrs, hier  = cv2.findContours(rotated_image.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Get rectangles contains each contour
     # rects = [cv2.boundingRect(ctr) for ctr in hier]
